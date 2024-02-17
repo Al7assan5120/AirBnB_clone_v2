@@ -12,10 +12,12 @@ def hello_HBNB():
     """display some text"""
     return "Hello HBNB!"
 
+
 @app.route('/hbnb', strict_slashes=False)
 def HBNB():
     """display some text"""
     return "HBNB"
+
 
 @app.route('/c/<text>', strict_slashes=False)
 def git_text(text):
