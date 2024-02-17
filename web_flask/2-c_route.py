@@ -20,7 +20,8 @@ def HBNB():
 @app.route('/c/<text>', strict_slashes=False)
 def git_text(text):
     """display some text"""
-    return f"{escape(text)}"
+    text = text.replace('_', ' ')
+    return f"C {escape(text)}"
 
 
 if __name__ == '__main__':
