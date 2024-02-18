@@ -1,18 +1,18 @@
 #!/usr/bin/python3
 """script that starts a Flask web application"""
-from flask import Flask
-from flask import render_template
+from flask import Flask, render_template
+
 from models import storage
-from models.state import State
-
 app = Flask(__name__)
+app.url_map.strict_slashes = False
 
 
-@app.route('/states_list', strict_slashes=False)
-def states_list():
-    """states list"""
-    list = storage.all(State)
-    return render_template('7-states_list.html', states=list)
+@app.route('/states_list')
+def states():
+    """Get all state data"""
+    data = storage.all("State")
+    return render_template("7-states_list.html",
+                           states=data)
 
 
 @app.teardown_appcontext

@@ -2,28 +2,28 @@
 """script that starts a Flask web application"""
 
 from flask import Flask
-from markupsafe import escape
 
 app = Flask(__name__)
+app.url_map.strict_slashes = False
 
 
-@app.route('/', strict_slashes=False)
-def hello_HBNB():
-    """display some text"""
+@app.route('/')
+def hello_hbnb():
+    """display hello holberton"""
     return "Hello HBNB!"
 
 
-@app.route('/hbnb', strict_slashes=False)
-def HBNB():
-    """display some text"""
+@app.route('/hbnb')
+def hbnb():
+    """display holberton"""
     return "HBNB"
 
 
-@app.route('/c/<text>', strict_slashes=False)
-def git_text(text):
-    """display some text"""
+@app.route('/c/<text>')
+def c(text):
+    """display C concatenating with any text"""
     text = text.replace('_', ' ')
-    return f"C {escape(text)}"
+    return "C {}".format(text)
 
 
 if __name__ == '__main__':
